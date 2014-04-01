@@ -2,15 +2,8 @@ import imaplib
 import email
 import time
 import re
-import os
-from flask import Flask
 
-app = Flask(__name__)
-
-#print email_message.items() # print all headers
-
-@app.route('/')
-def getmail():
+def get_mail():
   mail = imaplib.IMAP4_SSL('imap.gmail.com')
   mail.login('freefood.princeton@gmail.com', 'freefood333')
 
@@ -45,5 +38,5 @@ def getmail():
   body_re = re.compile('\s*-----\s+You are receiving')
   split = body_re.split(body_raw)
   body = split[0]
-  return time.asctime(date) + '</br>' + subject + '</br>' + body
-
+  output = [time.asctime(date), subject, body]
+  return output
