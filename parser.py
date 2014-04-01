@@ -56,7 +56,12 @@ def process_input(string, building_dict):
   blob = TextBlob(string)
   blob = TextBlob(blob.stripped)
   words = [x for (x,y) in blob.tags if not (y == "DT" or y == "IN" or y == "CC" or y == "TO")]
-  return building_search(words, building_dict)
+  building = building_search(words, building_dict)
+  if building:
+    (lat, lng) = get_geocode(building)
+    return [building, lat, lng]
+  else:
+    return None
 
 def get_geocode(building):
   url1 = 'http://maps.googleapis.com/maps/api/geocode/json?address='
@@ -70,13 +75,8 @@ def get_geocode(building):
   lng = data['results'][0]['geometry']['location']['lng']
   return (lat, lng)
 
-buildings = get_buildings()
+# buildings = get_buildings()
 
-while(True):
-  prompt = raw_input("Enter query: ")
-  building = process_input(prompt, buildings)
-  if building:
-    (lat, lng) = get_geocode(building)
-    print building
-    print lat
-    print lng
+# while(True):
+#   prompt = raw_input("Enter query: ")
+#   print process_input(prompt, buildings)
