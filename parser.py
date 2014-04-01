@@ -46,8 +46,6 @@ def building_search(words, building_dict):
               scores[proper_name] += 1
             except:
               scores[proper_name] += 2
-
-  print "DEBUGGING: Scores = ", scores # debugging
   try:
     return sorted(scores.items(), key=lambda a:a[1], reverse=True)[0][0]
   except:
