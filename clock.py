@@ -10,7 +10,7 @@ sched = Scheduler()
 buildings = get_buildings()
 current_email = None
 
-@sched.interval_schedule(seconds=15)
+@sched.interval_schedule(seconds=5)
 def timed_job():
   global current_email
   global buildings
