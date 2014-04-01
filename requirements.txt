@@ -8,8 +8,6 @@ gunicorn==18.0
 itsdangerous==0.24
 python-dateutil==2.2
 pytz==2014.2
-redis==2.9.1
-rq==0.3.13
 six==1.6.1
 textblob==0.8.4
 times==0.6.2
