@@ -10,7 +10,7 @@ sched = Scheduler()
 buildings = get_buildings()
 current_email = None
 
-@sched.interval_schedule(seconds=5)
+@sched.interval_schedule(seconds=15)
 def timed_job():
   global current_email
   global buildings
@@ -21,9 +21,9 @@ def timed_job():
     current_email = new_email
     print 'New email!'
     print '\n'.join(new_email)
-    # print 'The parsed information is'
+    print 'The parsed data is'
     sys.stdout.flush()
-    # print  process_input(' '.join(new_email[-2:]), buildings)
+    print  process_input(' '.join(new_email[-2:]), buildings)
   else:
     print 'Sorry, nothing new here'
   sys.stdout.flush()
