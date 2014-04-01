@@ -38,5 +38,5 @@ def get_mail():
   body_re = re.compile('\s*-----\s+You are receiving')
   split = body_re.split(body_raw)
   body = split[0]
-  output = [time.asctime(date), subject, body]
+  output = [time.asctime(date), sender, subject, body]
   return output
