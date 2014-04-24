@@ -59,7 +59,7 @@ def process_input(string, building_dict):
   building = building_search(words, building_dict)
   if building:
     (lat, lng) = get_geocode(building)
-    return [building, lat, lng]
+    return {'building': building, 'latitude': lat, 'longitude': lng}
   else:
     return None
 
