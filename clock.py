@@ -17,12 +17,12 @@ def timed_job():
   print '-'*50
   print 'Checking email now!'
   new_email = get_mail()
-  if (current_email == None or current_email[0] != new_email[0]):
+  if (current_email == None or current_email['uid'] != new_email['uid']):
     current_email = new_email
     print 'New email!'
     print '\n'.join(new_email)
     print 'The parsed data is'
-    location_info = process_input(' '.join(new_email[-2:]), buildings)
+    location_info = process_input(current_email['subject'] + ' ' + current_email['body'], buildings)
     params = dict(current_email.items() + location_info.items())
     print params
     sys.stdout.flush()
