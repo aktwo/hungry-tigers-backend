@@ -22,8 +22,10 @@ def timed_job():
     print 'New email!'
     print '\n'.join(new_email)
     print 'The parsed data is'
+    location_info = process_input(' '.join(new_email[-2:]), buildings)
+    params = dict(current_email.items() + location_info.items())
+    print params
     sys.stdout.flush()
-    print  process_input(' '.join(new_email[-2:]), buildings)
   else:
     print 'Sorry, nothing new here'
   sys.stdout.flush()
