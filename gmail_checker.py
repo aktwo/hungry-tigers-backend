@@ -19,8 +19,7 @@ def get_mail():
 
   email_message = email.message_from_string(raw_email)
 
-  sender = email.utils.parseaddr(email_message['From']) # for parsing "Yuji Tomita" <yuji@grovemade.com>
-  date = email.utils.parsedate(email_message['Date'])
+  sender = email.utils.parseaddr(email_message['From'])
 
   # clean up subject text
   subject_raw = email_message['Subject']
@@ -38,5 +37,5 @@ def get_mail():
   body_re = re.compile('\s*-----\s+You are receiving')
   split = body_re.split(body_raw)
   body = split[0]
-  output = {'uid': uid, 'timestamp': time.asctime(date), 'name': sender[0], 'email': sender[1], 'subject': subject, 'body': body}
+  output = {'uid': uid, 'timestamp': time.asctime(), 'name': sender[0], 'email': sender[1], 'subject': subject, 'body': body}
   return output
